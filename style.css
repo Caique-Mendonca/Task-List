@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    background-image: linear-gradient(to right, rgb(197, 27, 27), rgb(163, 34, 34) );
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    width: 30vw;
+    
+}
+.input-area label{
+    font-weight: bold;
+    color: #fff;
+}
+.input-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tarefa-lista h3{
+    font-weight: bold;
+    color: #fff;
+}
+#botao-adicionar{
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: 8px;
+    border-radius: 7px;
+    height: 31px;
+    background-image: linear-gradient(to right, orange, yellow);
+    border: black 1px solid;
+}
+#botao-adicionar:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, rgb(211, 138, 2), rgb(216, 216, 3));
+}
+#botao-adicionar:active{
+    background-image: linear-gradient(to left, orange, yellow);
+}
+.input-area #input{
+    height: 30px;
+    padding-left: 5px;
+    border: black 1px solid;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.input-area #input:focus{
+    outline: none;
+    border: black 2px solid;
+}
+.tarefas{
+    padding-left: 30px;
+}
+.tarefas li{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    font-size: 14px;
+}
