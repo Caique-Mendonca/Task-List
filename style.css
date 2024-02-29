@@ -20,6 +20,7 @@ body{
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
     width: 30vw;
+    min-width: 330px;
     
 }
 .input-area label{
