@@ -1,10 +1,10 @@
 window.addEventListener('load',()=>{
     let botao = document.querySelector('#botao-adicionar')
     botao.addEventListener('click', ()=>{
-        var inputTarefa = document.querySelector('#input').value
-        var tarefasOl = document.querySelector('.tarefas')
-        var tarefaLista = document.createElement('li')
-        var checkbox = document.createElement('input')
+        let inputTarefa = document.querySelector('#input').value
+        let tarefasOl = document.querySelector('.tarefas')
+        let tarefaLista = document.createElement('li')
+        let checkbox = document.createElement('input')
         tarefaLista.textContent = inputTarefa 
         checkbox.type = "checkbox"
         checkbox.classList.add('checkbox')
@@ -17,7 +17,7 @@ window.addEventListener('load',()=>{
     
     
     document.querySelector('.checkbox').addEventListener('click', ()=>{
-        alert('ola mundo')
+
         tarefaLista.classList.add('check')
     })
 })
