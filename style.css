@@ -14,7 +14,7 @@ body{
     justify-content: center;
 }
 .container{
-    background-image: linear-gradient(to right, rgb(197, 27, 27), rgb(163, 34, 34) );
+    background-color: rgb(231, 228, 228);
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -25,7 +25,7 @@ body{
 }
 .input-area label{
     font-weight: bold;
-    color: #fff;
+    color: #000;
 }
 .input-area{
     display: flex;
@@ -34,7 +34,7 @@ body{
 }
 .tarefa-lista h3{
     font-weight: bold;
-    color: #fff;
+    color: #000;
 }
 #botao-adicionar{
     padding-left: 6px;
@@ -70,6 +70,27 @@ body{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #fff;
-    font-size: 14px;
+    color: #000;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+.botao-remover{
+    background-color: transparent;
+    border: none;
+    margin: 0px 5px;
+    font-weight: 600;
+    padding: 4px;
+    border-radius: 50%;
+    transition: color 300ms ;
+}
+.botao-remover:hover{
+    color: red;
+}
+.checkbox{
+    background-color: green;
+    font-size: 110%;
+}
+.fa-trash-can, .fa-trash-can::before{
+    font-size: 15px;
 }
