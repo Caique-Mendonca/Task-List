@@ -42,7 +42,7 @@ body{
     margin-left: 8px;
     border-radius: 7px;
     height: 31px;
-    background-image: linear-gradient(to right, orange, yellow);
+    background-image: linear-gradient(to right, orange 60%, rgb(255, 208, 0));
     border: black 1px solid;
 }
 #botao-adicionar:hover{
@@ -94,3 +94,19 @@ body{
 .fa-trash-can, .fa-trash-can::before{
     font-size: 15px;
 }
+.botao-remover{
+    background-color: red;
+    border-radius: 10px;
+    border: 1px black solid;
+    margin: 4px 0px;
+    font-weight: 600;
+    padding: 2px 0px;
+}
+.checkbox{
+    width: 18px;
+    background-color: green;
+}
+.check{
+    color: green;
+}
+/* https://animista.net/ */
