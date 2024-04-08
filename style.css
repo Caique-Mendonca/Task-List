@@ -19,7 +19,7 @@ body{
     padding: 20px;
     border-radius: 10px;
     box-shadow: 2px 2px 4px black;
-    width: fit-content;
+    width: 60vw;
     min-width: 330px;
     max-width: 70vw;
     
