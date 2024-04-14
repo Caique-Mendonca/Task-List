@@ -66,6 +66,7 @@ body{
 }
 .tarefas{
     padding-left: 30px;
+    
 }
 .tarefas li{
     font-family: "Poppins", sans-serif;
@@ -81,6 +82,7 @@ body{
     border-radius: 8px;
     padding: 10px;
     text-wrap: wrap;
+    list-style: circle;
 }
 .botao-remover{
     background-color: transparent;

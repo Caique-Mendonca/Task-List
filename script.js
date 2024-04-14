@@ -1,4 +1,4 @@
-let contador = 1
+let contador = 0
 function deletarTarefa(id) {
     let tarefaHtml = document.querySelector(`#${id}`)
     tarefaHtml.remove()
@@ -7,7 +7,6 @@ window.addEventListener('load',()=>{
     let botao = document.querySelector('#botao-adicionar')
     botao.addEventListener('click', adicionarTarefa)
     
-
     function adicionarTarefa(){
         try {
             let inputTarefa = document.querySelector('#input').value
@@ -20,7 +19,12 @@ window.addEventListener('load',()=>{
             if (inputTarefa == "") {
                 throw "O campo não pode estar vazio"
             }
+
             tarefaLista.classList.add('tarefa-li')
+
+            contador++ 
+
+            tarefaLista.innerText += `${contador}. ` 
             tarefaLista.innerHTML += `${inputTarefa} 
             <div>
                 <input type="checkbox" class="checkbox">
@@ -29,9 +33,8 @@ window.addEventListener('load',()=>{
                     </button>
             </div>` 
             tarefaLista.id = `tarefa-${contador}`
-            contador++  
             tarefasOl.appendChild(tarefaLista)
-    
+
             document.querySelector('#input').value = ''
             botaoDeletar.addEventListener('click', ()=>{
                 document.querySelector('.tarefas li').style.display = "none"
@@ -40,9 +43,5 @@ window.addEventListener('load',()=>{
             let mensagemErro = document.querySelector('#error-message')
             mensagemErro.innerText = error
         }
-
     }
-
-    
-
 })
