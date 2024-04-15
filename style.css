@@ -22,7 +22,6 @@ body{
     width: 60vw;
     min-width: 330px;
     max-width: 70vw;
-    
 }
 .input-area label{
     font-weight: bold;
@@ -38,35 +37,39 @@ body{
     color: #000;
 }
 #botao-adicionar{
-    padding-left: 6px;
-    padding-right: 6px;
     margin-left: 8px;
     border-radius: 7px;
-    height: 31px;
-    background-image: linear-gradient(to right, orange 60%, rgb(255, 208, 0));
-    border: black 1px solid;
+    height: 30px;
+    width: 31px;
+    position: relative;
+    top: 1px;
+    background-color: rgb(39, 100, 190);
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 300ms ease;
+    box-shadow: 1px 2px 10px #464646;
 }
 #botao-adicionar:hover{
     cursor: pointer;
-    background-image: linear-gradient(to right, rgb(211, 138, 2), rgb(216, 216, 3));
-}
-#botao-adicionar:active{
-    background-image: linear-gradient(to left, orange, yellow);
+    background-color: rgb(34, 90, 173);
+    border: solid 1px black;
 }
 .input-area #input{
     height: 30px;
-    padding-left: 5px;
-    border: black 1px solid;
+    padding-left: 6px;
+    border: none;
     border-radius: 7px;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 1px 2px 10px #464646;
 }
 .input-area #input:focus{
     outline: none;
-    border: black 2px solid;
+    border: black 1px solid;
 }
 .tarefas{
     padding-left: 30px;
-    
 }
 .tarefas li{
     font-family: "Poppins", sans-serif;
@@ -115,5 +118,16 @@ body{
     font-family: sans-serif;
     font-size: 13px;
     font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .tarefas{
+        padding-left: 5px;
+    }
+}
+@media (max-width: 300px) {
+    .container{
+        min-width: 280px;
+    }
 }
 /* https://animista.net/ */
