@@ -101,21 +101,7 @@ body{
     border-radius: 50%;
     transition: color 300ms ;
 }
-#botao-excluir-selecionados{
-    margin-left: 8px;
-    border-radius: 7px;
-    padding: 3px 5px;
-    position: relative;
-    top: 1px;
-    background-color: rgb(190, 57, 39);
-    border: none;
-    color: white;
-    font-weight: 500;
-    font-size: 16px;
-    transition: background-color 300ms ease;
-    box-shadow: 1px 2px 10px #464646;
-}
-#botao-excluir-todos{
+.botao-excluir{
     margin: 8px;
     margin-left: 8px;
     border-radius: 7px;
