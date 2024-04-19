@@ -111,15 +111,8 @@ body{
 .botao-remover:hover{
     color: red;
 }
-.checkbox{
-    background-color: green;
-    font-size: 110%;
-}
 .fa-trash-can, .fa-trash-can::before{
     font-size: 15px;
-}
-.check{
-    color: green;
 }
 .div-erro{
     display: flex;
