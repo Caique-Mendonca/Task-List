@@ -81,6 +81,7 @@ body{
     margin: 2px 0px;
     border-radius: 8px;
     padding: 10px;
+    word-break: break-word;
 }
 .tarefa-li.tarefa-estilizada{
     color: green;
