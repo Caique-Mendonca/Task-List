@@ -2,6 +2,42 @@ let mensagemErro = document.querySelector('#error-message')
 let contador = 0
 let tarefasConcluidas = []
 let todasTarefas = []
+
+window.onload = function(){
+    try{
+        let tarefasArmazenadas = localStorage.getItem('tarefas')
+        if(tarefasArmazenadas){
+            todasTarefas = JSON.parse(tarefasArmazenadas)
+            contador = todasTarefas.length
+            exibirTarefasSalvas()
+        }
+    }catch(error){
+        let mensagemErro = document.querySelector('#error-message');
+        mensagemErro.innerText = error;
+        console.error(error)
+    }
+}
+function exibirTarefasSalvas() {
+    let tarefasOl = document.querySelector('.tarefas')
+    tarefasOl.innerHTML = '' // Limpar a lista antes de exibir as tarefas armazenadas
+    todasTarefas.forEach((tarefa)=>{
+        let tarefaLista = document.createElement('li')
+        tarefaLista.id = tarefa.id
+        tarefaLista.classList.add('tarefa-li')
+        if (tarefa.concluida){
+            tarefaLista.classList.add('tarefa-estilizada')
+        }
+        tarefaLista.innerHTML = `${tarefa.texto} 
+        <div>
+            <input type="checkbox" class="checkbox" onclick="conferirTarefa('${tarefa.id}')" ${tarefa.concluida ? 'checked' : ''}>
+            <button class="botao-remover" onclick="deletarTarefa('${'tarefa-'+contador}')">
+                <i class='fa-solid fa-trash-can'></i>
+            </button>
+        </div>`
+        tarefasOl.appendChild(tarefaLista)
+    })
+}
+
 function deletarTarefa(id) {
     let tarefaHtml = document.querySelector(`#${id}`)
     tarefaHtml.remove()
@@ -9,7 +45,13 @@ function deletarTarefa(id) {
 function conferirTarefa(id) {
     let tarefaConcluida = document.querySelector(`#${id}`)
     tarefaConcluida.classList.toggle("tarefa-estilizada")
-    tarefasConcluidas.push(tarefaConcluida)
+    let tarefa = todasTarefas.find(t => t.id === id)
+    if (tarefa){
+        // Atualizar o estado de conclusão da tarefa
+        tarefa.concluida = !tarefa.concluida
+        // Atualizar o localStorage com tarefas atualizadas
+        localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
+    }
 }
 
 let removerTodosSelecionados = document.querySelector('#botao-excluir-selecionados')
@@ -61,8 +103,7 @@ function adicionarTarefa(){
         tarefaLista.classList.add('tarefa-li')
         
         contador++ 
-        
-        tarefaLista.innerText += `${contador}. ` 
+         
         tarefaLista.innerHTML += `${inputTarefa} 
         <div>
             <input type="checkbox" class="checkbox" onclick="conferirTarefa('${'tarefa-'+contador}')">
@@ -73,11 +114,20 @@ function adicionarTarefa(){
         tarefaLista.id = `tarefa-${contador}`
         
         tarefasOl.appendChild(tarefaLista)
-        
-        let tarefaAdicionada = document.querySelector(`#tarefa-${contador}`)
-        todasTarefas.push(tarefaAdicionada)
+
+        let novaTarefa = {
+            id: `tarefa-${contador}`,
+            texto: inputTarefa,
+            concluida: false
+        }
+
+        todasTarefas.push(novaTarefa)
+
+        // Adicionar a tarefa ao localStorage
+        localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
 
         document.querySelector('#input').value = ''
+        // Limpar o campo de entrada após adicionar a tarefa
         botaoDeletar.addEventListener('click', ()=>{
             document.querySelector('.tarefas li').style.display = "none"
         })
