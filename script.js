@@ -1,7 +1,7 @@
 let mensagemErro = document.querySelector('#error-message')
-let contador = 0
 let tarefasConcluidas = []
 let todasTarefas = []
+let contador = 0
 
 window.onload = function(){
     try{
@@ -30,7 +30,7 @@ function exibirTarefasSalvas() {
         tarefaLista.innerHTML = `${tarefa.texto} 
         <div>
             <input type="checkbox" class="checkbox" onclick="conferirTarefa('${tarefa.id}')" ${tarefa.concluida ? 'checked' : ''}>
-            <button class="botao-remover" onclick="deletarTarefa('${'tarefa-'+contador}')">
+            <button class="botao-remover" onclick="deletarTarefa('${tarefa.id}')">
                 <i class='fa-solid fa-trash-can'></i>
             </button>
         </div>`
@@ -41,6 +41,13 @@ function exibirTarefasSalvas() {
 function deletarTarefa(id) {
     let tarefaHtml = document.querySelector(`#${id}`)
     tarefaHtml.remove()
+    
+    // Remover a tarefa do array todasTarefas
+    todasTarefas = todasTarefas.filter(tarefa => tarefa.id !== id);
+    
+    // Atualizar o localStorage com as tarefas atualizadas
+    localStorage.setItem('tarefas', JSON.stringify(todasTarefas));
+    
 }
 function conferirTarefa(id) {
     let tarefaConcluida = document.querySelector(`#${id}`)
@@ -58,11 +65,11 @@ let removerTodosSelecionados = document.querySelector('#botao-excluir-selecionad
 removerTodosSelecionados.addEventListener('click', ()=>{
     try {
         tarefasConcluidas.forEach((item)=>{
-        item.remove()
-    })
-    if(tarefasConcluidas.length == 0){
-        throw "Não há nenhuma tarefa selecionada"
-    }   
+            item.remove()
+        })
+        if(tarefasConcluidas.length == 0){
+            throw "Não há nenhuma tarefa selecionada"
+        }   
     } catch (error) {
         let mensagemErro = document.querySelector('#error-message')
         mensagemErro.innerText = error
@@ -103,7 +110,7 @@ function adicionarTarefa(){
         tarefaLista.classList.add('tarefa-li')
         
         contador++ 
-         
+        
         tarefaLista.innerHTML += `${inputTarefa} 
         <div>
             <input type="checkbox" class="checkbox" onclick="conferirTarefa('${'tarefa-'+contador}')">
@@ -114,8 +121,9 @@ function adicionarTarefa(){
         tarefaLista.id = `tarefa-${contador}`
         
         tarefasOl.appendChild(tarefaLista)
-
+        
         let novaTarefa = {
+            numero: contador,
             id: `tarefa-${contador}`,
             texto: inputTarefa,
             concluida: false
