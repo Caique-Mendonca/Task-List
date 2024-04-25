@@ -1,5 +1,6 @@
 let mensagemErro = document.querySelector('#error-message')
 let tarefasConcluidas = []
+let todasTarefasHTML = []
 let todasTarefas = []
 let contador = 0
 
@@ -79,14 +80,16 @@ removerTodosSelecionados.addEventListener('click', ()=>{
 let removerTodasTarefas = document.querySelector('#botao-excluir-todos')
 removerTodasTarefas.addEventListener('click', ()=>{
     try {
-        todasTarefas.forEach((tarefa)=>{
-            tarefa.remove
-            todasTarefas.pop(tarefa)
-            localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
-        })
         if(todasTarefas.length == 0){
             throw "Não existe nenhuma tarefa para excluir"
         }
+        while(todasTarefas.length){
+            todasTarefas.pop()
+        }
+        localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
+        todasTarefasHTML.forEach((tarefaHTML)=>{
+            tarefaHTML.remove()
+        })
     } catch (error) {
         let mensagemErro = document.querySelector('#error-message')
         mensagemErro.innerText = error  
@@ -130,6 +133,7 @@ function adicionarTarefa(){
             concluida: false
         }
 
+        todasTarefasHTML.push(tarefaLista)
         todasTarefas.push(novaTarefa)
 
         // Adicionar a tarefa ao localStorage
