@@ -79,10 +79,11 @@ removerTodosSelecionados.addEventListener('click', ()=>{
 let removerTodasTarefas = document.querySelector('#botao-excluir-todos')
 removerTodasTarefas.addEventListener('click', ()=>{
     try {
-        todasTarefas.forEach((item)=>{
-            item.remove()
+        todasTarefas.forEach((tarefa)=>{
+            tarefa.remove
+            todasTarefas.pop(tarefa)
+            localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
         })
-        contador = 0
         if(todasTarefas.length == 0){
             throw "Não existe nenhuma tarefa para excluir"
         }
