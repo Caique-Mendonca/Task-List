@@ -78,7 +78,7 @@ removerTodosSelecionados.addEventListener('click', ()=>{
         todasTarefas = todasTarefas.filter(tarefa => tarefa.concluida == false)
         // Atualizar o localStorage com as tarefas atualizadas
         localStorage.setItem('tarefas', JSON.stringify(todasTarefas));
-        // essa parte as tarefas checadas so estavam sendo removidas se fizesse um reload da pagina
+        // essa parte por algum motivo as tarefas checadas so estavam sendo removidas se fizesse um reload da pagina
         location.reload()
     } catch (error) {
         menssagemDeErro(error)
@@ -100,6 +100,7 @@ removerTodasTarefas.addEventListener('click', ()=>{
         localStorage.setItem('tarefas', JSON.stringify(todasTarefas))
         // Removendo o HTML da lista de tarefas 
         document.querySelector('.tarefas').innerHTML = ""
+        contador = 0
     } catch (error) {
         menssagemDeErro(error)
     }
@@ -116,7 +117,7 @@ function adicionarTarefa(){
         
         mensagemErro.innerText = ""
         
-        if (inputTarefa == "") {
+        if (!inputTarefa) {
             throw "O campo não pode estar vazio"
         }
         
