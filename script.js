@@ -106,6 +106,10 @@ removerTodasTarefas.addEventListener('click', ()=>{
     }
 })
 
+function geradorDeIDs() {
+    return "tarefa-"+ Date.now()
+}
+
 let botao = document.querySelector('#botao-adicionar')
 botao.addEventListener('click', adicionarTarefa)
 function adicionarTarefa(){
@@ -124,22 +128,24 @@ function adicionarTarefa(){
         tarefaLista.classList.add('tarefa-li')
         
         contador++ 
-        
+         
+        let idGerado = geradorDeIDs()
+
         tarefaLista.innerHTML += `${inputTarefa} 
         <div>
-            <input type="checkbox" class="checkbox" onclick="conferirTarefa('${'tarefa-'+contador}')">
-            <button class="botao-remover" onclick="deletarTarefa('${'tarefa-'+contador}')">
+            <input type="checkbox" class="checkbox" onclick="conferirTarefa('${idGerado}')">
+            <button class="botao-remover" onclick="deletarTarefa('${idGerado}')">
                 <i class='fa-solid fa-trash-can'></i>
             </button>
         </div>` 
-        tarefaLista.id = `tarefa-${contador}`
+        tarefaLista.id = idGerado
         
         tarefasOl.appendChild(tarefaLista)
         
         // Criando um objeto com as propriedades da tarefa criada para transferir para o json do localStorage
         let novaTarefa = {
             numero: contador,
-            id: `tarefa-${contador}`,
+            id: idGerado,
             texto: inputTarefa,
             concluida: false
         }
