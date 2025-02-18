@@ -124,7 +124,11 @@ body{
     font-family: sans-serif;
     font-size: 13px;
 }
-
+.botoes-excluir{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 @media (max-width: 600px) {
     .tarefas{
         padding-left: 5px;
